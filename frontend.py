@@ -16,8 +16,4 @@ st.set_page_config(
     }
 )
 
-df = tvl
-
-st.dataframe(df)
-
-st.line_chart(np.random.randn(30, 3))
+st.write('hello world')
