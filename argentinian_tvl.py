@@ -1,6 +1,21 @@
-import requests, pandas as pd, datetime, dotenv
+import requests, pandas as pd, datetime
 from web3 import Web3
-dotenv.load_dotenv()
+# dotenv.load_dotenv()
+import pandas as pd
+import streamlit as st
+import numpy as np
+
+st.set_page_config(
+    page_title="Crecimiento Research",
+    page_icon="🧊",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    }
+)
 
 protocols_list = ['beefy', 'exactly', 'mountain-protocol', 'kleros', 'rsk-bridge', 'balmy', 'contango-v2', 'contango-v1']
 protocols_list = ['rsk-bridge']
@@ -30,4 +45,6 @@ df['tvl'] = df['tvl'] / 1e6
 df['tvl'] = df['tvl'].map('${:,.2f}M'.format)
 df['date'] = df['date'].dt.strftime('%d/%m/%Y')
 
-print(df)
+st.write(df)
+
+st.line_chart(np.random.randn(30, 3))
