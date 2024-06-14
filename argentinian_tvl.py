@@ -15,6 +15,9 @@ def main():
             timestamp = entry['date']
             tvl = entry['totalLiquidityUSD']
             date = datetime.datetime.fromtimestamp(timestamp).strftime('%d/%m/%Y')
+            # Renombrar protocolos
+            if protocol in ['contango-v1', 'contango-v2']:
+                protocol = 'contango'
             all_data.append([timestamp, date, tvl, protocol])
 
     df = pd.DataFrame(all_data, columns=['timestamp', 'date', 'tvl', 'protocol'])
@@ -23,6 +26,9 @@ def main():
 
     df.set_index(['date', 'protocol'], inplace=True)
     df.sort_index(inplace=True)
+
+    # Eliminar índices duplicados manteniendo el último valor
+    df = df[~df.index.duplicated(keep='last')]
 
     full_date_range = pd.date_range(start=df.index.get_level_values('date').min(), end=df.index.get_level_values('date').max())
 
@@ -38,7 +44,7 @@ def main():
     # Eliminar la columna 'timestamp'
     df.drop(columns=['timestamp'], inplace=True)
 
-    df.to_csv('nombre_del_archivo.csv', index=False)
+    # df.to_csv('nombre_del_archivo.csv', index=False)
 
     return df
 
