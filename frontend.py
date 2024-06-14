@@ -22,5 +22,7 @@ st.title('Argentinean Crypto Projects Analytics')
 df = main()
 # st.dataframe(df,use_container_width=True)
 
-fig = px.line(df, x="date", y="tvl", color="protocol")
+df = df[df['date'] > '2023-01-01']
+
+fig = px.area(df, x="date", y="tvl", color="protocol")
 st.plotly_chart(fig, use_container_width=True)
