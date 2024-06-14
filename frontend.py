@@ -1,5 +1,8 @@
+import numpy as np
 import pandas as pd
+import plotly.express as px
 import streamlit as st
+import argentinian_tvl as tvl
 
 st.set_page_config(
     page_title="Crecimiento Research",
@@ -13,4 +16,8 @@ st.set_page_config(
     }
 )
 
-st.write('hello world')
+df = tvl
+
+st.dataframe(df)
+
+st.line_chart(np.random.randn(30, 3))
