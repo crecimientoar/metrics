@@ -2,22 +2,25 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-import argentinian_tvl as tvl
+from argentinian_tvl import main
 
 st.set_page_config(
     page_title="Crecimiento Research",
-    page_icon="🧊",
+    page_icon="🇦🇷",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
+        'Get Help': 'https://t.me/+4hL7Vc7llSoxOWRk',
+        'Report a bug': "https://t.me/+4hL7Vc7llSoxOWRk",
+        'About': "# Argentinean Crypto Projects Analytics"
     }
 )
 
-df = tvl
 
-st.dataframe(df)
+st.title('Argentinean Crypto Projects Analytics')
 
-st.line_chart(np.random.randn(30, 3))
+df = main()
+# st.dataframe(df,use_container_width=True)
+
+fig = px.line(df, x="date", y="tvl", color="protocol")
+st.plotly_chart(fig, use_container_width=True)
