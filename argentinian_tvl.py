@@ -2,7 +2,8 @@ import requests, pandas as pd, datetime, dotenv
 from web3 import Web3
 dotenv.load_dotenv()
 
-protocols_list = ['exactly']
+protocols_list = ['beefy', 'exactly', 'mountain-protocol', 'kleros', 'rsk-bridge', 'balmy', 'contango-v2', 'contango-v1']
+protocols_list = ['rsk-bridge']
 all_data = []
 
 for protocol in protocols_list:
