@@ -44,7 +44,10 @@ def main():
     # Eliminar la columna 'timestamp'
     df.drop(columns=['timestamp'], inplace=True)
 
-    # df.to_csv('nombre_del_archivo.csv', index=False)
+    # Eliminar filas donde 'tvl' es 0
+    df = df[df['tvl'] != 0]
+
+    df.to_csv('nombre_del_archivo.csv', index=False)
 
     return df
 
