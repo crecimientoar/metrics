@@ -18,3 +18,8 @@ pandas = "^2.2.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry-auto-export]
+output = "requirements.txt"
+without_hashes = true
+without = ["dev"]
