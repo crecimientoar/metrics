@@ -17,6 +17,25 @@ st.set_page_config(
     }
 )
 
+def pretty_number(value):
+    sign = '-' if value < 0 else ''
+    abs_value = abs(value)
+    if abs_value < 1e3:
+        return f'{sign}{abs_value:.2f}'
+    elif 1e3 <= abs_value < 1e6:
+        return f'{sign}{abs_value / 1e3:.2f}K'
+    elif 1e6 <= abs_value < 1e9:
+        return f'{sign}{abs_value / 1e6:.2f}M'
+    elif 1e9 <= abs_value < 1e12:
+        return f'{sign}{abs_value / 1e9:.2f}B'
+    elif 1e12 <= abs_value < 1e15:
+        return f'{sign}{abs_value / 1e12:.2f}T'
+    else:
+        return f'{sign}{abs_value:.2e}'
+
+def pretty_currency(value):
+    return f'${pretty_number(value)}'
+
 # load dataframe
 df = main()
 
@@ -25,6 +44,22 @@ df = df[df['date'] > '2023-01-01']
 
 # title
 st.title('Argentinean Crypto Ecosystem')
+
+# KPIs
+# st.dataframe(df)
+
+# define columns
+col1, col2 = st.columns(2)
+
+# latest tvl
+with col1:
+    latest_tvl = df[ df['date'] == df['date'].max() ]['tvl'].sum()
+    st.metric(label='Total Value Locked',value=pretty_currency(latest_tvl))
+
+# quantity of protocols
+    with col2:
+        quantity_protocols = df['protocol'].nunique()
+        st.metric(label='Protocols tracked',value=quantity_protocols)
 
 #tvl chart
 st.header('Argentinean Crypto Projects by Total Value Locked')
