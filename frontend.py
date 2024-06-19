@@ -69,3 +69,20 @@ st.plotly_chart(fig, use_container_width=True)
 # ecosystem landscape (figma embed)
 figma_url = "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FPUo88BOv4TnB6g5wvE7u3H%2FCrypto-Landscape-in-Argentina%3Fnode-id%3D0-1%26t%3DmtgupHxoF481CKB4-1"
 components.iframe(figma_url, width=None, height=800, scrolling=False)
+
+# ecosystem directory
+
+
+projects = pd.read_csv('Argentinean Crypto Projects.csv')
+
+st.dataframe(
+    projects,
+    use_container_width=True,
+    hide_index=True,
+    column_order=['category', 'name', 'website'],
+    column_config={
+        'website': st.column_config.LinkColumn(
+            display_text="https://(.*?)\/"
+        )
+    }
+    )
