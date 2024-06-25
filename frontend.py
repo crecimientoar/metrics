@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -67,11 +66,11 @@ fig = px.area(df, x="date", y="tvl", color="protocol")
 st.plotly_chart(fig, use_container_width=True)
 
 # ecosystem landscape (figma embed)
-figma_url = "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FPUo88BOv4TnB6g5wvE7u3H%2FCrypto-Landscape-in-Argentina%3Fnode-id%3D0-1%26t%3DmtgupHxoF481CKB4-1"
+figma_url = "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FPUo88BOv4TnB6g5wvE7u3H%2FCrypto-Landscape-in-Argentina%3Fpage-id%3D0%253A1%26node-id%3D1-2%26viewport%3D-39%252C-4%252C0.76%26t%3D1som4tZp4BQaRzYk-1%26scaling%3Dscale-down%26content-scaling%3Dfixed"
+
 components.iframe(figma_url, width=None, height=800, scrolling=False)
 
 # ecosystem directory
-
 
 projects = pd.read_csv('Argentinean Crypto Projects.csv')
 
