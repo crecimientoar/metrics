@@ -47,10 +47,9 @@ def main():
     # Eliminar filas donde 'tvl' es 0
     df = df[df['tvl'] != 0]
 
-    df.to_csv('nombre_del_archivo.csv', index=False)
-
     return df
 
 if __name__ == "__main__":
     df = main()
+    df.to_csv('tvl.csv', index=False)
     print(df)
