@@ -5,6 +5,7 @@ dotenv.load_dotenv()
 
 dune_key = os.environ["DUNE_API_KEY"]
 headers = {"X-DUNE-API-KEY": dune_key}
+# https://dune.com/hildobby/poap
 
 # # Execution ID
 # url = f"https://api.dune.com/api/v1/query/{query_id}/execute"
