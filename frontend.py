@@ -66,8 +66,29 @@ st.header('Argentinean Crypto Projects by Total Value Locked')
 fig = px.area(df, x="date", y="tvl", color="protocol")
 st.plotly_chart(fig, use_container_width=True)
 
+# ecosystem landscape (figma embed)
+figma_url = "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FPUo88BOv4TnB6g5wvE7u3H%2FCrypto-Landscape-in-Argentina%3Fpage-id%3D0%253A1%26node-id%3D1-2%26viewport%3D-39%252C-4%252C0.76%26t%3D1som4tZp4BQaRzYk-1%26scaling%3Dscale-down%26content-scaling%3Dfixed"
+
+components.iframe(figma_url, width=None, height=800, scrolling=False)
+
+# ecosystem directory
+
+projects = pd.read_csv('Argentinean Crypto Projects.csv')
+
+st.dataframe(
+    projects,
+    use_container_width=True,
+    hide_index=True,
+    column_order=['category', 'name', 'website'],
+    column_config={
+        'website': st.column_config.LinkColumn(
+            display_text="https://(.*?)\/"
+        )
+    }
+    )
+
 #poap
-st.subheader('POAP')
+st.header('POAP')
 cola, colb, colc = st.columns(3)
 with cola:
     st.metric(label='POAP Holders',value=pretty_number(poap.poap_holders()))
@@ -92,24 +113,3 @@ with colc:
     hist_collec = pd.DataFrame(poap.poap_historic_collections())
     fig_c = px.line(hist_collec, x="time", y="amount")
     st.plotly_chart(fig_c, use_container_width=True)
-
-# ecosystem landscape (figma embed)
-figma_url = "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FPUo88BOv4TnB6g5wvE7u3H%2FCrypto-Landscape-in-Argentina%3Fpage-id%3D0%253A1%26node-id%3D1-2%26viewport%3D-39%252C-4%252C0.76%26t%3D1som4tZp4BQaRzYk-1%26scaling%3Dscale-down%26content-scaling%3Dfixed"
-
-components.iframe(figma_url, width=None, height=800, scrolling=False)
-
-# ecosystem directory
-
-projects = pd.read_csv('Argentinean Crypto Projects.csv')
-
-st.dataframe(
-    projects,
-    use_container_width=True,
-    hide_index=True,
-    column_order=['category', 'name', 'website'],
-    column_config={
-        'website': st.column_config.LinkColumn(
-            display_text="https://(.*?)\/"
-        )
-    }
-    )
