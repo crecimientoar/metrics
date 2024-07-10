@@ -1,9 +1,10 @@
-import requests, csv, os, dotenv
+import requests, csv
 from datetime import datetime
 from io import StringIO
-dotenv.load_dotenv()
+import streamlit as st
 
-dune_key = os.environ["DUNE_API_KEY"]
+dune_key = st.secrets["DUNE_API_KEY"]
+
 headers = {"X-DUNE-API-KEY": dune_key}
 # https://dune.com/hildobby/poap
 
