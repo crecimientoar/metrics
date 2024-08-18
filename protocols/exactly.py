@@ -10,6 +10,7 @@ headers = {"X-DUNE-API-KEY": dune_key}
 
 ##################
 ### Daily active users
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def daily_active_users():
     query_id = 1848503
     url = f"https://api.dune.com/api/v1/query/{query_id}/results/csv"
@@ -29,6 +30,7 @@ def daily_active_users():
 
 ##################
 ### Daily active users
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def total_users():
     query_id = 2180940
     url = f"https://api.dune.com/api/v1/query/{query_id}/results/csv"
@@ -54,6 +56,7 @@ def total_users():
 
 ##################
 ### Daily active users
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def total_tx():
     query_id = 2260290
     url = f"https://api.dune.com/api/v1/query/{query_id}/results/csv"
@@ -73,6 +76,7 @@ def total_tx():
 
 ##################
 ### The total amount of tx
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def total_transactions():
     query_id = 2260433
     url = f"https://api.dune.com/api/v1/query/{query_id}/results"
@@ -86,6 +90,7 @@ def total_transactions():
 
 ##################
 ### Depositors at this moment
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def active_depositors():
     query_id = 2969689
     url = f"https://api.dune.com/api/v1/query/{query_id}/results"
@@ -99,6 +104,7 @@ def active_depositors():
 
 ##################
 ### Borrowers at this moment
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def active_borrowers():
     query_id = 2974644
     url = f"https://api.dune.com/api/v1/query/{query_id}/results"
@@ -112,6 +118,7 @@ def active_borrowers():
 
 ##################
 ### Historic depositors
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def historic_depositors():
     query_id = 2983679
     url = f"https://api.dune.com/api/v1/query/{query_id}/results/csv"
@@ -132,6 +139,7 @@ def historic_depositors():
 
 ##################
 ### Historic borrowers
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def historic_borrowers():
     query_id = 2983449
     url = f"https://api.dune.com/api/v1/query/{query_id}/results/csv"

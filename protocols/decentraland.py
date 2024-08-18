@@ -26,6 +26,7 @@ headers = {"X-DUNE-API-KEY": dune_key}
 
 ##################
 ### Holders y supply
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def main_stats():
     query_id = 373477
     url = f"https://api.dune.com/api/v1/query/{query_id}/results"
@@ -40,6 +41,7 @@ def main_stats():
 
 ##################
 ### Volume and sales
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def timeline_stats():
     query_id = 373489
     url = f"https://api.dune.com/api/v1/query/{query_id}/results"
@@ -57,6 +59,7 @@ def timeline_stats():
 
 ##################
 ### Historic floors and volumes
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def historic_floor_and_volumes():
     query_id = 373537
     url = f"https://api.dune.com/api/v1/query/{query_id}/results/csv"

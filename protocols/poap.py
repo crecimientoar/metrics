@@ -26,6 +26,7 @@ headers = {"X-DUNE-API-KEY": dune_key}
 
 ##################
 ### Poap Holders
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def poap_holders():
     query_id = 2448239
     url = f"https://api.dune.com/api/v1/query/{query_id}/results"
@@ -39,6 +40,7 @@ def poap_holders():
 
 ##################
 ### Poap Collections
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def poap_collections():
     query_id = 2448223
     url = f"https://api.dune.com/api/v1/query/{query_id}/results"
@@ -54,7 +56,7 @@ def poap_collections():
 
 ##################
 ### Poap Minted
-
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def poap_minted():
     query_id = 2448176
     url = f"https://api.dune.com/api/v1/query/{query_id}/results"
@@ -70,6 +72,7 @@ def poap_minted():
 
 ##################
 ### Poap Historic Minters
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def poap_historic_minters():
     query_id = 2998884
     url = f"https://api.dune.com/api/v1/query/{query_id}/results/csv"
@@ -93,7 +96,7 @@ def poap_historic_minters():
 
 ##################
 ### Poap Historic Minted
-
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def poap_historic_minted():
     query_id = 2448201
     url = f"https://api.dune.com/api/v1/query/{query_id}/results/csv"
@@ -117,7 +120,7 @@ def poap_historic_minted():
 
 ##################
 ### Poap Historic Collections
-
+@st.cache_data(ttl=86400)  # Cache por 24 horas (86400 segundos)
 def poap_historic_collections():
     query_id = 2448195
     url = f"https://api.dune.com/api/v1/query/{query_id}/results/csv"
